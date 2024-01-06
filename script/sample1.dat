@@ -1,0 +1,5 @@
+source: sample
+ var: sleep_time = 1000 * 3
+ click: left,(0,0)
+ wait:  null,null,sleep_time
+ click: left,(150,150,2)

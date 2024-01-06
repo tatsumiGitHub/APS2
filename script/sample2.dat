@@ -1,0 +1,17 @@
+source: default
+ var: sleep_time = 5000
+ var: rand_scale = 25
+ var: threshold = 1.0
+ click: left,(0,1)
+ click: left,(375,520)
+ click: left,(375,545)
+ wait:  null,null,sleep_time
+ click: left,(800,520)
+ wait:  cmp_screen_cursor_move,(800,520,rand_scale),threshold
+ loop: 2
+   begin:
+      wheel: down,3
+      click: left,(1460,760)
+   end:
+ wait:  null,null,sleep_time
+ wheel: up,3
