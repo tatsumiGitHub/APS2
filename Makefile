@@ -17,7 +17,7 @@ $(CLASS): $(SRC)
 .java.class:
 	$(JAVAC) $<
 
-clean:;	\rm -f *.jar *.class */*.class */*/*.class */*/*/*.class \
+clean:;	\rm -f *.class */*.class */*/*.class */*/*/*.class \
 		*~ */*~ */*/*~ */*/*/*~ \
 		log/*
 

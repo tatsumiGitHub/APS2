@@ -3,6 +3,10 @@ package system;
 import java.io.*;
 import java.util.*;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+
 import javax.swing.JProgressBar;
 
 import system.controller.CursorController;
@@ -21,7 +25,7 @@ public class AutomaticPlaybackSystem {
 
 	public static String done(int numerator, int denominator) {
 		final int MAX = 30;
-		int ratio = numerator * 100 / denominator;
+		int ratio = numerator * 100 / (denominator);
 		int r = ratio * 30 / 100;
 		String done = String.format("\u001b[1A\u001b[KDone %03d: [\u001b[00;32m", ratio);
 		for (int i = 0; i < MAX; i++) {
@@ -43,6 +47,13 @@ public class AutomaticPlaybackSystem {
 
 	public AutomaticPlaybackSystem(String setup_file_path, String src_file_path) {
 		this.src_file_path = src_file_path;
+		if (Files.notExists(Paths.get("./log/"))) {
+			try {
+				Files.createDirectory(Paths.get("./log/"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		SourceAnalyzer analyzer = new SourceAnalyzer(LOG_FILE_NAME);
 		analyzer.writeAnalyzerInformation(setup_file_path, src_file_path);
 
@@ -71,6 +82,7 @@ public class AutomaticPlaybackSystem {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			src.add("padding");
 		}
 		analyzer.closeAnalyzerLog(deny);
 	}
@@ -111,7 +123,7 @@ public class AutomaticPlaybackSystem {
 			for (int i = 0; i < overall_loop; i++) {
 				/* point window */
 				for (int line_number = 1; line_number < src.size(); line_number++) {
-					src_count ++;
+					src_count++;
 					String[] token = (src.get(line_number)).split(":");
 					String[] arguments;
 					switch (token[0]) {
