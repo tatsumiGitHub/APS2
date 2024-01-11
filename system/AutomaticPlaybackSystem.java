@@ -160,13 +160,9 @@ public class AutomaticPlaybackSystem {
 								return false;
 							}
 							if (arguments[0].equals("left")) {
-								for (int j = 0; j < c; j++) {
-									cursor.click_leftMouse(c);
-								}
+								cursor.click_leftMouse(c);
 							} else if (arguments[0].equals("right")) {
-								for (int j = 0; j < c; j++) {
-									cursor.click_rightMouse(c);
-								}
+								cursor.click_rightMouse(c);
 							}
 							try {
 								Thread.sleep(interval);
