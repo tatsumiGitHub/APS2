@@ -21,7 +21,8 @@ clean:;	\rm -f *.class */*.class */*/*.class */*/*/*.class \
 		*~ */*~ */*/*~ */*/*/*~ \
 		log/*
 
-jar:; jar -cvfm AutomaticPlaybackSystemGUI_2.jar manifest.mf \
+jar:; make
+	  jar -cvfm AutomaticPlaybackSystemGUI_2.jar manifest.mf \
 		*.class \
 		*/*.class \
 		*/*/*.class \
@@ -34,9 +35,7 @@ zip:;
 		*/*/*.java \
 		*/*/*/*.java \
 		configs/setup.config \
-		src/* \
-		icon/* \
-		img/* \
+		scripts/* \
 		log/ \
 		manifest.mf \
 		Makefile \

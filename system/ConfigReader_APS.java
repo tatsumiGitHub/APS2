@@ -10,7 +10,7 @@ public class ConfigReader_APS {
 	private int window_height = 320;
 	private int loop = 1;
 	private int interval = 1000;
-	private String file_name = "./src/default.dat";
+	private String file_name = "./scripts/default.dat";
 	private boolean close = false;
 	private int closeX = 0;
 	private int closeY = 0;
@@ -29,7 +29,7 @@ public class ConfigReader_APS {
 						" height   320\n" +
 						" loop     1\n" +
 						" interval 2000\n" +
-						" path     ./script/sample1.dat\n" +
+						" path     ./scripts/default.dat\n" +
 						" close    yes\n" +
 						"   close-button-position 1530,5,1\n" +
 						" Notification    no\n" +
