@@ -18,8 +18,9 @@ public class AutomaticPlaybackSystemFrame_2 extends JFrame implements APS_Image 
 		///////////////////////
 		///// Screen Size /////
 		///////////////////////
-		final int width = 480;
-		final int height = 320;
+		ConfigReader_APS conf = new ConfigReader_APS(config_path);
+		final int width = conf.getWidthValue();
+		final int height = conf.getHeightValue();
 
 		/////////////////
 		///// Color /////

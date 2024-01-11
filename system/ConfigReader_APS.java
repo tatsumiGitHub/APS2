@@ -6,6 +6,8 @@ import java.nio.file.Paths;
 
 public class ConfigReader_APS {
 	private String user_name = null;
+	private int window_width = 480;
+	private int window_height = 320;
 	private int loop = 1;
 	private int interval = 1000;
 	private String file_name = "./src/default.dat";
@@ -23,6 +25,8 @@ public class ConfigReader_APS {
 				FileWriter fw = new FileWriter(new File("./setup.config"));
 
 				fw.write("UserName  hoge\n" +
+						" width    480\n" +
+						" height   320\n" +
 						" loop     1\n" +
 						" interval 2000\n" +
 						" path     ./script/sample1.dat\n" +
@@ -50,6 +54,24 @@ public class ConfigReader_APS {
 						switch (token[0]) {
 							case "UserName":
 								user_name = token[1];
+								break;
+							case "width":
+								window_width = Integer.parseInt(token[1]);
+								if (window_width < 0) {
+									System.out.println("Error: Invalid value was obtained\n"
+											+ "Int  : window_width\n"
+											+ "value: " + window_width);
+									System.exit(1);
+								}
+								break;
+							case "height":
+								window_height = Integer.parseInt(token[1]);
+								if (window_height < 0) {
+									System.out.println("Error: Invalid value was obtained\n"
+											+ "Int  : window_height\n"
+											+ "value: " + window_height);
+									System.exit(1);
+								}
 								break;
 							case "loop":
 								loop = Integer.parseInt(token[1]);
@@ -136,6 +158,14 @@ public class ConfigReader_APS {
 
 	public String getUserName() {
 		return user_name;
+	}
+
+	public int getWidthValue() {
+		return window_width;
+	}
+
+	public int getHeightValue() {
+		return window_height;
 	}
 
 	public int getLoopValue() {
